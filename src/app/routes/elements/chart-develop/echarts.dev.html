@@ -1,0 +1,118 @@
+<div nz-row [nzGutter]="8">
+  <div nz-col class="gutter-row" [nzSpan]="6">
+    <form nz-form #form="ngForm">
+
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label [attr.for]="'name'" nz-form-item-required>服务</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24">
+          <nz-select [nzSize]="'large'" name="AxisType" [nzPlaceHolder]="'--请选择服务--'" [(ngModel)]="formModel.modelMsg.service" (ngModelChange)="selectService(formModel.modelMsg.service)">
+            <nz-option *ngFor="let s of availableServices" [nzLabel]="s.serviceName" [nzValue]="s"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label>维度字段</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <nz-select [nzSize]="'large'" name="AxisType" [nzPlaceHolder]="'--请选择维度字段--'" [(ngModel)]="formModel.modelMsg.dimensionRows[0]">
+            <nz-option *ngFor="let f of availableFields" [nzLabel]="f.name" [nzValue]="f.name"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-form-item nz-row *ngFor="let m of formModel.modelMsg.measureRows; index as i;first as isFirst;last as isLast">
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label>度量字段{{i+1}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <nz-select [nzSize]="'large'" name="AxiasType" [(ngModel)]="formModel.modelMsg.measureRows[i]" [nzPlaceHolder]="'--请选择度量字段--'">
+            <nz-option *ngFor="let f of availableFields" [nzLabel]="f.name" [nzValue]="f.name"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-col [nzSpan]="4" *ngIf="isLast">
+          <a (click)="addMeasure()">
+            <i class="anticon anticon-plus-square"></i>
+          </a>
+          <a (click)="deleteMeasure()" *ngIf="!isFirst && isLast">
+            <i class="anticon anticon-minus-square"></i>
+          </a>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:8px;">
+        <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
+          <button nz-button [nzSize]="'large'" [nzType]="'primary'" (click)="getJsonData()" style="width: 50%;">获取Json</button>
+        </div>
+      </div>
+
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label [attr.for]="'name'" nz-form-item-required>组件名称</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+          <nz-input [nzSize]="'large'"[(ngModel)]="formModel.componentMsg.name" [nzId]="'name'" name="name"></nz-input>
+          <!--<div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div>-->
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label>组件主题</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14" *ngIf="modData == null">
+          <nz-select [nzSize]="'large'" [nzPlaceHolder]="'--请选择组件主题--'" [(ngModel)]="formModel.componentMsg.subject" name="subject">
+            <nz-option *ngFor="let sub of themes" [nzLabel]="sub.name" [nzValue]="sub.id"></nz-option>
+          </nz-select>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14" *ngIf="modData != null">
+          <nz-select [nzSize]="'large'" [(ngModel)]="formModel.componentMsg.subject" name="subject">
+            <nz-option [nzLabel]="'综合分析'" [nzValue]="0"></nz-option>
+            <nz-option [nzLabel]="'交易分析'" [nzValue]="1"></nz-option>
+            <nz-option [nzLabel]="'故障分析'" [nzValue]="2"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSpan]="6">
+          <label>组件描述</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="14">
+          <nz-input [nzSize]="'large'"name="describe" [(ngModel)]="formModel.componentMsg.describe"></nz-input>
+        </div>
+      </div>
+      <div nz-form-item nz-row style="margin-bottom:8px;">
+        <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
+          <button *ngIf="modData==null" nz-button [nzSize]="'large'" [nzType]="'primary'" (click)="save()" style="width: 50%;">保存</button>
+          <button *ngIf="modData!=null" nz-button [nzSize]="'large'" [nzType]="'primary'" (click)="modSave()" style="width: 50%;">保存修改</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div nz-col class="gutter-row" [nzSpan]="6">
+    <div ace-editor
+         [text]="payloadStr"
+         [mode]="'json'"
+         [theme]="'clouds'"
+         [options]="aceConfig.options"
+         [readOnly]="true"
+         style="display:block; height: 700px; width:100%;"></div>
+  </div>
+  <div nz-col class="gutter-row" [nzSpan]="6">
+    <div nz-row>
+      <div nz-col [nzSpan]="7" [nzOffset]="17">
+        <button nz-button [nzSize]="'large'" [nzType]="'primary'" (click)="preview()" style="width: 100%;">预览</button>
+      </div>
+    </div>
+    <div ace-editor
+         [text]="aceConfig.text"
+         [mode]="aceConfig.mode"
+         [theme]="aceConfig.theme"
+         [options]="aceConfig.options"
+         [readOnly]="aceConfig.readOnly"
+         (textChanged)="aceConfig.textChanged($event)"
+         style="display:block; height: 600px; width:100%;"></div>
+  </div>
+  <div nz-col class="gutter-row" [nzSpan]="6">
+    <div echarts [options]="option" (chartInit)="onChartInit()"></div>
+  </div>
+</div>

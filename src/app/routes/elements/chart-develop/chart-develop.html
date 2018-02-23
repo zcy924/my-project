@@ -1,0 +1,56 @@
+<div nz-row>
+  <div nz-col [nzSpan]="2" >
+    <div class="left-content">
+      <ul nz-menu [nzMode]="'vertical'" style="background: RGBA(0,0,0,0);padding-top: 20px">
+        <li nz-submenu *ngFor="let chart of charts;" >
+          <span title><i class="{{chart.icon}}"></i> {{chart.name}}</span>
+          <div>
+          <div *ngIf="chart.lists.length >= 3">
+            <ul style="width: 600px;">
+              <li nz-menu-item *ngFor="let item of chart.lists;" (click)="select(item);" style="float: left;width: 200px;height: 145px;padding: 5px;background-color: RGBA(0,0,0,0)"><img src="{{item.img}}" style="width: 200px;height: 130px"></li>
+            </ul>
+          </div>
+          <div *ngIf="chart.lists.length == 2">
+            <ul style="width: 400px">
+              <li nz-menu-item *ngFor="let item of chart.lists;" (click)="select(item);" style="float: left;width: 200px;height: 145px;padding: 5px;background-color: RGBA(0,0,0,0)"><img src="{{item.img}}" style="width: 200px;height: 130px"></li>
+            </ul>
+          </div>
+          <div *ngIf="chart.lists.length < 2">
+            <ul>
+              <li nz-menu-item *ngFor="let item of chart.lists;" (click)="select(item);" style="float: left;width: 200px;height: 145px;padding: 5px;background-color: RGBA(0,0,0,0)"><img src="{{item.img}}" style="width: 200px;height: 130px"></li>
+            </ul>
+          </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div nz-col [nzSpan]="22">
+    <div class="right-content">
+      <div *ngIf="showChart">
+        <div nz-row [nzGutter]="8" *ngFor="let chart of charts;" style="padding-bottom: 15px;padding-left: 10px">
+          <div nz-col [nzSpan]="6" *ngFor="let item of chart.lists;" (click)="select(item)" style="padding-bottom: 10px">
+            <!--<nz-card style="width:315px; height: 230px; background-color: RGB(249,249,249)">-->
+            <!--<ng-template #body>-->
+            <!--<img src="{{item.img}}" style="width: 265px;height: 180px">-->
+            <!--<div style="width: 100%;background-color: #0050ef;height: 100%"></div>-->
+            <!--</ng-template>-->
+            <!--</nz-card>-->
+            <div style="width:315px; height: 230px; background-color: RGB(249,249,249);margin-top: 20px">
+              <img src="{{item.img}}" style="width: 295px;height: 210px;margin: 10px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!showChart" style="padding: 10px">
+        <echarts-dev [chartType]="selectedChartNo" [icon]="icon"></echarts-dev>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
