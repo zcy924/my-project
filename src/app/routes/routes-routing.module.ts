@@ -15,7 +15,6 @@ import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
 import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
 // single pages
-import { CallbackComponent } from './callback/callback.component';
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
@@ -31,18 +30,18 @@ const routes: Routes = [
             { path: 'dashboard/analysis', component: DashboardAnalysisComponent, data: { translate: 'dashboard_analysis' } },
             { path: 'dashboard/monitor', component: DashboardMonitorComponent, data: { translate: 'dashboard_monitor' } },
             { path: 'dashboard/workplace', component: DashboardWorkplaceComponent, data: { translate: 'dashboard_workplace' } },
-            { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
+            // { path: 'widgets', loadChildren: './widgets/widgets.module#WidgetsModule' },
             { path: 'elements', loadChildren: './elements/elements.module#ElementsModule' },
-            { path: 'other', loadChildren: './other/other.module#OtherModule' },
-            { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-            { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
-            { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-            { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-            { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
+            // { path: 'other', loadChildren: './other/other.module#OtherModule' },
+            // { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
+            // { path: 'editor', loadChildren: './editor/editor.module#EditorModule' },
+            // { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
+            // { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
+            // { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
             { path: 'pages', loadChildren: './pages/pages.module#PagesModule' },
             { path: 'logics', loadChildren: './logics/logics.module#LogicsModule' },
-            { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
-            { path: 'pro', loadChildren: './pro/pro.module#ProModule' }
+            // { path: 'extras', loadChildren: './extras/extras.module#ExtrasModule' },
+            // { path: 'pro', loadChildren: './pro/pro.module#ProModule' }
         ]
     },
     // 全屏布局
@@ -64,7 +63,6 @@ const routes: Routes = [
         ]
     },
     // 单页不包裹Layout
-    { path: 'callback/:type', component: CallbackComponent },
     { path: '403', component: Exception403Component },
     { path: '404', component: Exception404Component },
     { path: '500', component: Exception500Component },
