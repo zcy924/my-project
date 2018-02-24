@@ -45,12 +45,12 @@ private chartDevUrl = "";
   }
 
   queryServiceList() {
-    return this.http.get(this.chartDevUrl + '/v1/chartModel/serviceList', {
-      params: {orgNo: '0000'}
-    }).pipe(
-      tap(_ => console.log(`fetched ChartSubjects`)),
-      catchError(this.handleError('ChartSubjects', []))
-    );
+    // return this.http.get(this.chartDevUrl + '/v1/chartModel/serviceList', {
+    //   params: {orgNo: '0000'}
+    // }).pipe(
+    //   tap(_ => console.log(`fetched ChartSubjects`)),
+    //   catchError(this.handleError('ChartSubjects', []))
+    // );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

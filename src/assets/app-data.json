@@ -9,7 +9,7 @@
         "email": "cipchk@qq.com"
     },
     "menu": [{
-        "text": "主导航",
+        "text": "工作面板",
         "translate": "main_navigation",
         "group": true,
         "children": [{
@@ -34,19 +34,22 @@
                 "link": "/dashboard/workplace",
                 "translate": "dashboard_workplace"
             }]
-        }, {
+        },
+            {
             "text": "快捷菜单",
             "translate": "shortcut",
             "icon": "icon-rocket",
             "shortcut_root": true,
             "children": []
-        }, {
+        },
+            {
             "text": "小部件",
             "translate": "widgets",
             "link": "/widgets",
             "icon": "icon-grid",
             "badge": 2
-        }]
+        }
+        ]
     }, {
         "text": "组件",
         "translate": "component",

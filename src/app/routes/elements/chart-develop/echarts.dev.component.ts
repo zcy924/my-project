@@ -5,8 +5,8 @@ import {NzMessageService} from 'ng-zorro-antd';
 import {THEMES} from './constant';
 import {NzModalSubject} from 'ng-zorro-antd';
 import * as _ from 'lodash';
-// import 'brace/mode/javascript';
-// import 'brace/theme/clouds';
+import 'brace/mode/javascript';
+import 'brace/theme/clouds';
 
 @Component({
   selector: 'echarts-dev',
@@ -69,10 +69,10 @@ export class EchartsDevComponent implements OnInit {
       this.formModel.componentMsg.subject = this.modData.componentMsg['chartSubjectId'];
       this.formModel.componentMsg.icon = this.modData.componentMsg['icon'];
 
-      this.chartService.queryServiceList()
-        .subscribe(data => {
-          this.availableServices = data['retList'];
-        });
+      // this.chartService.queryServiceList()
+      //   .subscribe(data => {
+      //     this.availableServices = data['retList'];
+      //   });
       this.payload = this.modData['dataMsg'];
       this.payloadStr = JSON.stringify(this.modData['dataMsg'], null, 2);
       this.aceConfig.text = this.modData.optionMsg;
@@ -81,10 +81,10 @@ export class EchartsDevComponent implements OnInit {
     }else {
       this.formModel.componentMsg.icon = this.icon;
 
-      this.chartService.queryServiceList()
-        .subscribe(data => {
-          this.availableServices = data['retList'];
-        });
+      // this.chartService.queryServiceList()
+      //   .subscribe(data => {
+      //     this.availableServices = data['retList'];
+      //   });
 
       this.payload = CHARTTYPEMAPPING[this.chartType].payload;
       this.payloadStr = JSON.stringify(this.payload, null, 2);
@@ -179,10 +179,10 @@ export class EchartsDevComponent implements OnInit {
     this.formModel.componentMsg.name = '';
     this.formModel.componentMsg.subject = null;
     this.formModel.componentMsg.icon = item.icon;
-    this.chartService.queryServiceList()
-      .subscribe(data => {
-        this.availableServices = data['retList'];
-      });
+    // this.chartService.queryServiceList()
+    //   .subscribe(data => {
+    //     this.availableServices = data['retList'];
+    //   });
 
     this.payload = CHARTTYPEMAPPING[item['no']].payload;
     this.payloadStr = JSON.stringify(this.payload, null, 2);
