@@ -1,7 +1,8 @@
 import {NzMessageService} from 'ng-zorro-antd';
 import {Component, OnInit} from '@angular/core';
-// import { _HttpClient } from '@delon/theme';
 import {V1Service} from './v1.service';
+import {NzModalService} from "ng-zorro-antd";
+import {AddTodoComponent} from "./addTodo.component";
 
 @Component({
     selector: 'app-dashboard-v1',
@@ -10,7 +11,7 @@ import {V1Service} from './v1.service';
 export class DashboardV1Component implements OnInit {
 
     // constructor(private http: _HttpClient, public msg: NzMessageService) { }
-    constructor(private v1Service: V1Service, public msg: NzMessageService) {
+    constructor(private v1Service: V1Service, public msg: NzMessageService, private modal: NzModalService) {
     }
 
     todoData: any;
@@ -37,7 +38,7 @@ export class DashboardV1Component implements OnInit {
         },
         xAxis: {
             type: 'category',
-            data: ['巴西','印尼','美国','印度','中国','世界人口(万)']
+            data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)']
         },
         series: [
             {
@@ -127,37 +128,39 @@ export class DashboardV1Component implements OnInit {
     //     {completed: false, avatar: '6', name: 'Forever', content: `Walking through green fields ，sunshine in my eyes.`}
     // ];
 
-    quickMenu = false;
-
-    webSite: any[] = [];
-    salesData: any[] = [];
-    offlineChartData: any[] = [];
+    // quickMenu = false;
+    //
+    // webSite: any[] = [];
+    // salesData: any[] = [];
+    // offlineChartData: any[] = [];
 
     ngOnInit() {
-        // this.http.get('/chart').subscribe((res: any) => {
-        //     this.webSite = res.visitData.slice(0, 10);np
-        //     this.salesData = res.salesData;
-        //     this.offlineChartData = res.offlineChartData;
-        // });
+        this.getTodo();
     }
 
     getTodo() {
-        this.v1Service.getTodo()
+        const params = {
+            creator: "admin"
+        }
+        this.v1Service.getTodo(params)
             .subscribe(data => {
-                this.todoData = data;
+                this.todoData = data['retList'];
             });
     }
 
-    updateTodo() {
-        const params = {};
-        this.v1Service.updateTodo(params)
+    active(id,s) {
+        const params = {
+            _id:id,
+            status:s
+        };
+        this.v1Service.modTodo(params)
             .subscribe(data => {
                 this.msg.success('修改成功!');
             });
 
     }
 
-    deleteTodo(id) {
+    delete(id) {
         this.v1Service.deleteTodo(id)
             .subscribe(data => {
                 this.msg.success('成功删除该代办事项');
@@ -165,9 +168,12 @@ export class DashboardV1Component implements OnInit {
 
     }
 
-    completeTodo() {
-        const params = {};
-        this.v1Service.updateTodo(params)
+    complete(id,s) {
+        const params = {
+            _id:id,
+            status:s
+        };
+        this.v1Service.modTodo(params)
             .subscribe(data => {
                 this.msg.success('您已完成该任务!');
             });
@@ -175,12 +181,17 @@ export class DashboardV1Component implements OnInit {
     }
 
     addTodo() {
-        const params = {};
-        this.v1Service.addTodo(params)
-            .subscribe(data => {
-                this.msg.success('新增任务成功!');
-            });
-
+        this.modal.open({
+            title: '新增任务',
+            maskClosable: false,
+            footer: false,
+            content: AddTodoComponent,
+            onOk: () => {
+                this.getTodo();
+            },
+            onCancel: () => {
+            }
+        })
     }
 
     getCardData() {

@@ -10,11 +10,11 @@
             <i class="anticon anticon-question-circle-o"></i>
         </div>
         <div class="list-group list-group-flush">
-            <a (click)="msg.info('item 1')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 2')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 3')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 4')" class="list-group-item">How do i create account?</a>
-            <a (click)="msg.info('item 5')" class="list-group-item">How do i create account?</a>
+            <a (click)="msg.info('item 1')" class="list-group-item">切换至线下门店概览</a>
+            <a (click)="msg.info('item 2')" class="list-group-item">切换至商品交易量</a>
+            <a (click)="msg.info('item 3')" class="list-group-item">切换至商品库存量</a>
+            <a (click)="msg.info('item 4')" class="list-group-item">切换至现金流转量</a>
+            <a (click)="msg.info('item 5')" class="list-group-item">切换至热门搜索</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-primary rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">123,456</div>
-                <p class="text-nowrap">Website Traffics</p>
+                <p class="text-nowrap">线上浏览人数</p>
             </div>
             <div nz-col nzSpan="12">
                 <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"
@@ -35,7 +35,7 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-success rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">234,567K</div>
-                <p class="text-nowrap">Website Impressions</p>
+                <p class="text-nowrap">线上交易额</p>
             </div>
             <div nz-col nzSpan="12">
                 <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"
@@ -47,7 +47,7 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-orange rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">$458,778</div>
-                <p class="text-nowrap">Total Sales</p>
+                <p class="text-nowrap">跨境交易额</p>
             </div>
             <div nz-col nzSpan="12">
                 <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"
@@ -59,7 +59,7 @@
         <div nz-row nzType="flex" nzAlign="middle" class="bg-pink rounded-md">
             <div nz-col nzSpan="12" class="p-md text-white">
                 <div class="h2 mt0">456</div>
-                <p class="text-nowrap">Support Tickets</p>
+                <p class="text-nowrap">线上商品类型</p>
             </div>
             <div nz-col nzSpan="12">
                 <mini-bar height="35" color="#fff" borderWidth="3" [padding]="[36, 30, 30, 30]"
@@ -137,28 +137,40 @@
     <!--</nz-card>-->
     <!--</div>-->
     <div nz-col nzXs="24" nzMd="12">
-        <nz-card nzTitle="Todo lists" [nzBordered]="false" nzNoPadding>
-            <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'"
-                 class="py-sm bg-grey-lighter-h point"
-                 *ngFor="let item of todoData">
-                <div nz-col [nzSpan]="4" class="text-center">
-                    <nz-avatar [nzSrc]="'./assets/img/' + item.avatar + '.png'" [nzSize]="'large'"></nz-avatar>
+        <!--<nz-card nzTitle="Todo lists" [nzBordered]="false" nzNoPadding>-->
+            <!---->
+        <!--</nz-card>-->
+
+        <nz-card>
+            <ng-template #title>
+                Todo lists
+            </ng-template>
+            <ng-template #extra>
+                <a (click)="addTodo()"><i class="anticon anticon-plus"></i></a>
+            </ng-template>
+            <ng-template #body>
+                <div nz-row [nzType]="'flex'" [nzJustify]="'center'" [nzAlign]="'middle'"
+                     class="py-sm bg-grey-lighter-h point"
+                     *ngFor="let item of todoData">
+                    <div nz-col [nzSpan]="4" class="text-center">
+                        <nz-avatar [nzSrc]="'./assets/img/' + '4' + '.png'" [nzSize]="'large'"></nz-avatar>
+                    </div>
+                    <div nz-col [nzSpan]="18">
+                        <strong>{{item.name}}</strong>
+                        <p [class.text-deleted]="item.status">{{item.content}}</p>
+                    </div>
+                    <div nz-col [nzSpan]="2" class="text-right pr-md">
+                        <nz-dropdown [nzPlacement]="'topRight'">
+                            <i nz-dropdown class="icon-options-vertical"></i>
+                            <ul nz-menu>
+                                <li nz-menu-item *ngIf="item.status" (click)="item.status=false;active(item._id,false)">激活该任务</li>
+                                <li nz-menu-item *ngIf="!item.status" (click)="item.status=true;complete(item._id,true)">已完成该任务</li>
+                                <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1);delete(item._id)">删除该任务</li>
+                            </ul>
+                        </nz-dropdown>
+                    </div>
                 </div>
-                <div nz-col [nzSpan]="18">
-                    <strong>{{item.name}}</strong>
-                    <p [class.text-deleted]="item.completed">{{item.content}}</p>
-                </div>
-                <div nz-col [nzSpan]="2" class="text-right pr-md">
-                    <nz-dropdown [nzPlacement]="'topRight'">
-                        <i nz-dropdown class="icon-options-vertical"></i>
-                        <ul nz-menu>
-                            <li nz-menu-item *ngIf="item.completed" (click)="item.completed=false">Active</li>
-                            <li nz-menu-item *ngIf="!item.completed" (click)="item.completed=true">Completed</li>
-                            <li nz-menu-item (click)="todoData.splice(todoData.indexOf(item), 1)">Delted</li>
-                        </ul>
-                    </nz-dropdown>
-                </div>
-            </div>
+            </ng-template>
         </nz-card>
     </div>
 </div>

@@ -8,6 +8,7 @@ import { DashboardV1Component } from './dashboard/v1/v1.component';
 import { DashboardAnalysisComponent } from './dashboard/analysis/analysis.component';
 import { DashboardMonitorComponent } from './dashboard/monitor/monitor.component';
 import { DashboardWorkplaceComponent } from './dashboard/workplace/workplace.component';
+import {AddTodoComponent} from "./dashboard/v1/addTodo.component";
 // passport pages
 import { UserLoginComponent } from './passport/login/login.component';
 import { UserRegisterComponent } from './passport/register/register.component';
@@ -28,6 +29,7 @@ import {V1Service} from './dashboard/v1/v1.service';
         DashboardAnalysisComponent,
         DashboardMonitorComponent,
         DashboardWorkplaceComponent,
+        AddTodoComponent,
         // passport pages
         UserLoginComponent,
         UserRegisterComponent,
@@ -39,6 +41,9 @@ import {V1Service} from './dashboard/v1/v1.service';
     ],
     providers: [
         V1Service
+    ],
+    entryComponents:[
+        AddTodoComponent
     ]
 })
 
