@@ -21,6 +21,16 @@ import { Exception500Component } from './exception/500.component';
 
 const routes: Routes = [
     {
+        path:"login",
+        component:LayoutPassportComponent,
+        children:[
+            {
+                path:'',
+                component: UserLoginComponent
+            }
+        ]
+    },
+    {
         path: '',
         component: LayoutDefaultComponent,
         children: [
@@ -53,15 +63,6 @@ const routes: Routes = [
         ]
     },
     // passport
-    {
-        path: 'passport',
-        component: LayoutPassportComponent,
-        children: [
-            { path: 'login', component: UserLoginComponent },
-            { path: 'register', component: UserRegisterComponent },
-            { path: 'register-result', component: UserRegisterResultComponent }
-        ]
-    },
     // 单页不包裹Layout
     { path: '403', component: Exception403Component },
     { path: '404', component: Exception404Component },

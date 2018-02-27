@@ -97,7 +97,7 @@ export class UserLoginComponent implements OnDestroy {
                 id: 10000,
                 time: +new Date
             });
-            this.router.navigate(['/']);
+            this.router.navigate(['dashboard']);
         }, 1000);
     }
 

@@ -24,5 +24,6 @@ export class AppComponent implements OnInit {
     this.router.events
         .pipe(filter(evt => evt instanceof NavigationEnd))
         .subscribe(() => this.titleSrv.setTitle());
+    this.router.navigate(['login']);
   }
 }
