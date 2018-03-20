@@ -1,0 +1,265 @@
+@import '../../../styles/conf/conf';
+
+.screen-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    z-index: 1;
+    img {
+        width: 34%;
+        display: block;
+        height: 100%;
+        margin: 20px auto 0;
+    }
+    .screen-setting {
+        position: absolute;
+        height: 21px;
+        font-size: 15px;
+        color: wheat;
+        text-align: right;
+        padding-left: 17px;
+        top: 10px;
+    }
+
+    .anticon {
+        padding: 0 3px;
+        line-height: 20px;
+        &:hover {
+            color: #21e616;
+            cursor: pointer;
+        }
+    }
+}
+
+.card {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 7px;
+    position: relative;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    height: 100%;
+    overflow: hidden;
+}
+
+.screen-wrapper {
+    background: url($assets-root + $images-root + 'screen/screen_background.png') no-repeat;
+    //background: #3d77b8;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    .screen-container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        padding: 44px 15px 20px;
+        .screen-left {
+            float: left;
+            width: 100%;
+            height: 100%;
+            .card {
+                &:first-child {
+                    z-index: 2;
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .screen-center {
+            float: left;
+            width: 100%;
+            padding: 0 5px;
+            height: 100%;
+        }
+
+        .screen-right {
+            float: left;
+            width: 100%;
+            padding-left: 5px;
+            height: 100%;
+            .card {
+                overflow: hidden;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+    height: 22px;
+    font-size: 16px;
+    color: darkseagreen;
+    background-color: #f0f0f061;
+    //animation: flash 1s infinite alternate;
+    .title {
+        float: left;
+        font-size: 14px;
+        padding-left: 10px;
+        line-height: 20px;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background-color: rgba(103, 229, 48, 0.8);
+        transform: scale(1, 1);
+    }
+
+    100% {
+        background-color: rgba(224, 229, 34, 0.99);
+        transform: scale(1.001, 1.001);
+    }
+}
+
+.center-top {
+    height: 99%;
+    width: calc(50% - 2px);
+    position: absolute;
+    overflow: hidden;
+
+    padding: 10% 4px 4px;
+    &:first-child {
+        left: 0;
+    }
+    &:nth-child(2n) {
+        right: 0;
+    }
+}
+
+.separator-bar {
+    border-left: 2px white solid;
+    height: 52%;
+    position: absolute;
+    margin: 15% auto 0;
+    left: 50%;
+}
+
+.mask {
+    position: fixed;
+    top: 96px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.4;
+    background: #0f0e0e;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 1233;
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-left: 0;
+        list-style: none;
+        margin: 0 15% 1rem;
+        .active {
+            background-color: #fff;
+        }
+        li {
+            position: relative;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            width: 30px;
+            height: 3px;
+            margin-right: 3px;
+            margin-left: 3px;
+            text-indent: -999px;
+            background-color: rgba(255, 255, 255, .5);
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .carousel-inner {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        .carousel-item {
+            position: relative;
+            height: 100%;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%;
+            transition: -webkit-transform .6s ease;
+            transition: transform .6s ease;
+            transition: transform .6s ease, -webkit-transform .6s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 15%;
+        color: #fff;
+        text-align: center;
+        opacity: .5;
+        .anticon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: transparent no-repeat center center;
+            background-size: 100% 100%;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+    }
+    .carousel-control-prev {
+        left: 0;
+    }
+    .carousel-control-next {
+        right: 0;
+    }
+    a {
+        text-decoration: none;
+        background-color: transparent;
+        &:hover {
+            color: #fff;
+            outline: 0;
+            opacity: .9;
+        }
+    }
+}
+
+.moveToLeft {
+    transition: all 1s ease-out;
+}

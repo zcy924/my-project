@@ -15,6 +15,11 @@ import { CountdownModule } from 'ngx-countdown';
 const THIRDMODULES = [ CountdownModule ];
 // endregion
 import {AceEditorDirective} from '@shared/directives/ace-editor.directive';
+
+import {ToggleFullscreenDirective} from "@shared/directives/toggle-fullscreen.directive";
+import {ViewRankComponent} from "@shared/components/view/view-rank.component";
+import {ViewInfoComponent} from "@shared/components/view/view-info.component";
+import {ViewDetailComponent} from "@shared/components/view/view-detail.component";
 // region: your componets & directives
 const COMPONENTS = [];
 const DIRECTIVES = [];
@@ -38,7 +43,11 @@ const DIRECTIVES = [];
         // your components
         ...COMPONENTS,
         ...DIRECTIVES,
-        AceEditorDirective
+        AceEditorDirective,
+        ToggleFullscreenDirective,
+        ViewDetailComponent,
+        ViewInfoComponent,
+        ViewRankComponent
     ],
     exports: [
         CommonModule,

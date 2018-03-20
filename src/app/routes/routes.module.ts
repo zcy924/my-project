@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {NgxEchartsModule} from 'ngx-echarts';
+import {ScreenModule} from "./screen/screen.module";
 
 import { SharedModule } from '@shared/shared.module';
 import { RouteRoutingModule } from './routes-routing.module';
@@ -23,7 +24,7 @@ import {V1Service} from './dashboard/v1/v1.service';
 
 
 @NgModule({
-    imports: [ SharedModule, RouteRoutingModule, NgxEchartsModule ],
+    imports: [ SharedModule, RouteRoutingModule, NgxEchartsModule, ScreenModule ],
     declarations: [
         DashboardV1Component,
         DashboardAnalysisComponent,

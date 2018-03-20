@@ -1,1 +1,39 @@
 // 建议所有项目自定义样式放在该文件夹下
+@import 'css/normalize.css';
+@import "css/animate.css";
+//@import "fonts/fonts.metro/metro-icons.css";
+//@import "fonts/fonts.shepherd/style.css";
+@import "less/tile/index.less";
+@import "less/themes/index.less";
+@import "less/tile.menu.less";
+@import "form.less";
+@import "_roletree.less";
+@import "_zjicon";
+@import "_preloader";
+@import "_home";
+@import "_screen";
+@import "flip";
+//@import "conf/conf.scss";
+
+*, :before, :after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+}
+
+.custom-tile-menu {
+    min-width: 100vw;
+}

@@ -18,18 +18,9 @@ import { UserRegisterResultComponent } from './passport/register-result/register
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
+import {ScreenComponent} from "./screen/screen.component";
 
 const routes: Routes = [
-    {
-        path:"login",
-        component:LayoutPassportComponent,
-        children:[
-            {
-                path:'',
-                component: UserLoginComponent
-            }
-        ]
-    },
     {
         path: '',
         component: LayoutDefaultComponent,
@@ -62,7 +53,23 @@ const routes: Routes = [
             { path: '', loadChildren: './data-v/data-v.module#DataVModule' }
         ]
     },
+    // {
+    //     path: 'screen',
+    //     component: ScreenComponent,
+    //     children: [
+    //         { path: '', loadChildren: './data-v/data-v.module#DataVModule' }
+    //     ]
+    // },
     // passport
+    {
+        path: 'passport',
+        component: LayoutPassportComponent,
+        children: [
+            { path: 'login', component: UserLoginComponent, data:{text: '登录'} },
+            { path: 'register', component: UserRegisterComponent },
+            { path: 'register-result', component: UserRegisterResultComponent }
+        ]
+    },
     // 单页不包裹Layout
     { path: '403', component: Exception403Component },
     { path: '404', component: Exception404Component },

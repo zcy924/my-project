@@ -16,10 +16,11 @@ import { TreeAntdComponent } from './tree-antd/tree-antd.component';
 import { DemoSortableComponent } from './sortable/sortable.component';
 import { SweetAlertComponent } from './sweetalert/sweetalert.component';
 import {ChartDevelopComponent} from './chart-develop/chart-develop.component';
+import {HomeComponent} from "./home/home.component";
 
 const routes: Routes = [
     { path: 'buttons', component: ChartDevelopComponent },
-    { path: 'notification', component: NotificationComponent },
+    { path: 'notification', component: HomeComponent },
     { path: 'modal', component: ModalComponent },
     { path: 'sweetalert', component: SweetAlertComponent },
     { path: 'spin', component: SpinComponent },

@@ -21,9 +21,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+      this.titleSrv.setTitle('数据可视化');
     this.router.events
         .pipe(filter(evt => evt instanceof NavigationEnd))
         .subscribe(() => this.titleSrv.setTitle());
-    this.router.navigate(['login']);
+    // this.router.navigate(['passport/login']);
+    this.router.navigate(['dashboard/v1']);
   }
 }
