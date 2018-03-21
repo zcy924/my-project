@@ -8,7 +8,6 @@ import {handleError} from "@core/err";
 export class HomeService {
 
     private url = `${environment.SERVICE_URL}`;
-    private SERVERAPI = `${environment.SERVICE_URL}`;
 
     constructor(private http: HttpClient) {
 
@@ -20,7 +19,7 @@ export class HomeService {
 
 
     updateHomeDef(def) {
-        return this.http.put(this.SERVERAPI + 'system/v1/user/view', {
+        return this.http.put(this.url + '/system/v1/user/view', {
             no: '0000',
             userHomeDef: JSON.stringify(def)
         }).pipe(
@@ -41,7 +40,7 @@ export class HomeService {
 
     // 根据id获取图表详细信息
     getOptionAndDataById(id) {
-        return this.http.get(this.SERVERAPI + '/homechart/chartmodel/chartDetail/' + id)
+        return this.http.get(this.url + '/homechart/chartmodel/chartDetail/' + id)
             .pipe(
                 tap(_ => console.log(`fetched ChartSubjects`)),
                 catchError(handleError('ChartSubjects', []))

@@ -18,9 +18,12 @@ import { UserRegisterResultComponent } from './passport/register-result/register
 import { Exception403Component } from './exception/403.component';
 import { Exception404Component } from './exception/404.component';
 import { Exception500Component } from './exception/500.component';
+import {EchartsGraphComponent} from "./screen/components/echarts-graph.component";
 // service
-
+import {HomeService} from "./elements/home/home.service";
+import {ScreenService} from "./screen/screen.service";
 import {V1Service} from './dashboard/v1/v1.service';
+import {InteractService} from "./screen/interact.service";
 
 
 @NgModule({
@@ -38,13 +41,18 @@ import {V1Service} from './dashboard/v1/v1.service';
         // single pages
         Exception403Component,
         Exception404Component,
-        Exception500Component
+        Exception500Component,
+        EchartsGraphComponent
     ],
     providers: [
-        V1Service
+        V1Service,
+        HomeService,
+        ScreenService,
+        InteractService
     ],
     entryComponents:[
-        AddTodoComponent
+        AddTodoComponent,
+        EchartsGraphComponent
     ]
 })
 

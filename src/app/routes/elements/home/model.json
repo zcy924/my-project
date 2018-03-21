@@ -1,86 +1,61 @@
 {
-    "retCode": "00",
-    "retList": [
-        {
-            "chartDesc": "爱仕达所",
-            "name": "在Xcxzxc",
-            "icon": null,
-            "id": "e2ab9ab4-93c5-427b-b78f-ccf923487863",
-            "type": "0",
-            "chart_option": "\nthat.option = {\n    title: {\n        text: '堆叠区域图'\n    },\n    tooltip : {\n        trigger: 'axis',\n        axisPointer: {\n            type: 'cross',\n            label: {\n                backgroundColor: '#6a7985'\n            }\n        }\n    },\n    legend: {\n        data:legend\n    },\n    toolbox: {\n        feature: {\n            saveAsImage: {}\n        }\n    },\n    grid: {\n        left: '3%',\n        right: '4%',\n        bottom: '3%',\n        containLabel: true\n    },\n    xAxis : [\n        {\n            type : 'category',\n            boundaryGap : false,\n            data : dimensionList[0].data\n        }\n    ],\n    yAxis : [\n        {\n            type : 'value'\n        }\n    ],\n    series : [\n     {\n       name: measureList[0].name,\n       type: 'line',\n       stack: '总量',\n       areaStyle: {normal: {}},\n       data: measureList[0].data,\n     }\n   ]\n};\n"
+    "element": {
+        "dataMsg": {
+            "data": [
+                {
+                    "交易量": 694400.0,
+                    "网点": "杭州地区"
+                },
+                {
+                    "交易量": 663800.0,
+                    "网点": "石桥支行"
+                },
+                {
+                    "交易量": 652600.0,
+                    "网点": "总行营业部"
+                },
+                {
+                    "交易量": 608800.0,
+                    "网点": "湖墅支行"
+                },
+                {
+                    "交易量": 540700.0,
+                    "网点": "绍兴店口支行"
+                },
+                {
+                    "交易量": 537600.0,
+                    "网点": "城北支行"
+                },
+                {
+                    "交易量": 534000.0,
+                    "网点": "金沙小微支行"
+                },
+                {
+                    "交易量": 521400.0,
+                    "网点": "临浦支行"
+                },
+                {
+                    "交易量": 490400.0,
+                    "网点": "官巷口支行"
+                },
+                {
+                    "交易量": 466100.0,
+                    "网点": "益乐自助"
+                }
+            ]
         },
-        {
-            "chartDesc": "henhao",
-            "name": "哈哈哈哈哈",
-            "icon": null,
-            "id": "0cec14b1-c112-49f5-a1f3-2dc2597480fe",
-            "type": "0",
-            "chart_option": "\nthat.option = {\n    title: {\n        text: '世界人口总量',\n        subtext: '数据来自网络'\n    },\n    tooltip: {\n        trigger: 'axis',\n        axisPointer: {\n            type: 'shadow'\n        }\n    },\n    legend: {\n        data: that.payload.legend\n    },\n    grid: {\n        left: '3%',\n        right: '4%',\n        bottom: '3%',\n        containLabel: true\n    },\n    xAxis: {\n        type: 'value',\n        boundaryGap: [0, 0.01]\n    },\n    yAxis: {\n        type: 'category',\n        data: that.payload.dimensionList[0].data\n    },\n    series: [\n      {\n        type:'bar',\n        name:that.payload.measureList[0].name,\n        data:that.payload.measureList[0].data\n      }\n    ]\n};\n"
-        },
-        {
-            "chartDesc": "echarts-8",
-            "name": "echarts-8",
-            "icon": null,
-            "id": "6303db6b-bd84-466c-afeb-036dba27b8ec",
-            "type": "0",
-            "chart_option": "\nthat.option = {\n    title: {\n        text: '交易类型占比'\n    },\n    tooltip : {\n        trigger: 'axis',\n        axisPointer: {\n            type: 'cross',\n            label: {\n                backgroundColor: '#6a7985'\n            }\n        }\n    },\n    legend: {\n        data:legend\n    },\n    toolbox: {\n        feature: {\n            saveAsImage: {}\n        }\n    },\n    grid: {\n        left: '3%',\n        right: '4%',\n        bottom: '3%',\n        containLabel: true\n    },\n    xAxis : [\n        {\n            type : 'category',\n            boundaryGap : false,\n            data : dimensionList[0].data\n        }\n    ],\n    yAxis : [\n        {\n            type : 'value'\n        }\n    ],\n    series : [\n     {\n       name: measureList[0].name,\n       type: 'line',\n       stack: '总量',\n       areaStyle: {normal: {}},\n       data: measureList[0].data,\n     }\n   ]\n};\n"
-        },
-        {
-            "chartDesc": "info2",
-            "name": "info2",
-            "icon": null,
-            "id": "b20dacc4-928e-4b5b-a77c-40df00a2c3d3",
-            "type": "1",
-            "chart_option": "[\n  {\n    \"dataStyle\": {\n      \"font-size\": \"10px\"\n    },\n    \"lineStyle\": {\n      \"font-size\": \"20px\",\n      \"background-color\": \"green\"\n    },\n    \"prefix\": \"现金库存2\",\n    \"data\": \"交易类型\"\n  },\n  {\n    \"dataStyle\": {\n      \"font-size\": \"41px\",\n      \"display\": \"block\"\n    },\n    \"lineStyle\": {},\n    \"data\": \"交易量\"\n  }\n]"
-        },
-        {
-            "chartDesc": "turn-over",
-            "name": "turn-over",
-            "icon": null,
-            "id": "0616bdae-6793-4c56-b644-faa55df3a866",
-            "type": "10",
-            "chart_option": "[{\"id\":\"4f92187e-3c39-41f5-a8e0-25dec445951c\",\"type\":\"2\"}]"
-        },
-        {
-            "chartDesc": "turnover-8",
-            "name": "turnover-8",
-            "icon": null,
-            "id": "a648c17b-5194-4cf9-b1a8-ff882294ac3e",
-            "type": "10",
-            "chart_option": "[{\"id\":\"b20dacc4-928e-4b5b-a77c-40df00a2c3d3\",\"type\":\"1\"}]"
-        },
-        {
-            "chartDesc": "detail-8",
-            "name": "detail-8",
-            "icon": null,
-            "id": "4f92187e-3c39-41f5-a8e0-25dec445951c",
-            "type": "2",
-            "chart_option": "{\"style\":{},\"fields\":[{\"desc\":\"现金库存\",\"data\":\"交易类型\"},{\"desc\":\"现金库存\",\"data\":\"交易量\"}]}"
-        },
-        {
-            "chartDesc": "detail2",
+        "optionMsg": "{\n  \"style\": {},\n  \"fields\": [\n    {\n      \"desc\": \"网点\",\n      \"data\": \"网点\"\n    },\n    {\n      \"desc\": \"交易量\",\n      \"data\": \"交易量\"\n    }\n  ]\n}",
+        "componentMsg": {
+            "creator": "ccliu",
+            "subject": 0,
             "name": "detail2",
             "icon": null,
-            "id": "4a0f37b5-78fc-4da0-aa92-de9c0858e4e0",
+            "describe": "detail2",
             "type": "2",
-            "chart_option": "{\n  \"style\": {},\n  \"fields\": [\n    {\n      \"desc\": \"网点\",\n      \"data\": \"网点\"\n    },\n    {\n      \"desc\": \"交易量\",\n      \"data\": \"交易量\"\n    }\n  ]\n}"
-        },
-        {
-            "chartDesc": "rank-8",
-            "name": "rank-8",
-            "icon": null,
-            "id": "a8f1f7dc-5d14-48ea-b7bc-511c15234a73",
-            "type": "3",
-            "chart_option": "{\"headStyle\":{},\"lineStyle\":{},\"topStyle\":{},\"fields\":[{\"field\":\"交易类型\",\"desc\":\"用户名\"},{\"field\":\"交易量\",\"desc\":\"姓名\"}],\"top\":{\"title\":\"用户列表\",\"subtitleStyle\":{},\"lineStyle\":{},\"subtitle\":\"（xxx行)\",\"titleStyle\":{}}}"
-        },
-        {
-            "chartDesc": "rank2",
-            "name": "rank2",
-            "icon": null,
-            "id": "3c4029cc-1fc1-43b3-8d23-573da5c2d2e0",
-            "type": "3",
-            "chart_option": "{\n  \"headStyle\": {},\n  \"lineStyle\": {},\n  \"topStyle\": {},\n  \"fields\": [\n    {\n      \"field\": \"网点\",\n      \"desc\": \"交易类型\"\n    },\n    {\n      \"field\": \"CASE量\",\n      \"desc\": \"交易量\"\n    }\n  ],\n  \"top\": {\n    \"title\": \"交易类型\",\n    \"subtitleStyle\": {},\n    \"lineStyle\": {},\n    \"subtitle\": \"（杭州银行)\",\n    \"titleStyle\": {}\n  }\n}"
+            "creatorOrgNo": "0000",
+            "status": 0
         }
-    ],
+    },
+    "retCode": "00",
     "retMsg": "成功"
 }

@@ -13,6 +13,7 @@ export class ToggleFullscreenDirective {
     if (screenfull.enabled) {
       // screenfull.request(this.el.nativeElement);
       screenfull.toggle();
+      console.log('全屏模式');
     }
   }
 

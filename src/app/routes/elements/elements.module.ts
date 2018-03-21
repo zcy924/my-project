@@ -28,7 +28,6 @@ import {TreeAntdLineComponent} from './tree-antd/line.component';
 
 import {ChartDevelopModule} from './chart-develop/chart-develop.module';
 import {HomeModule} from "./home/home.module";
-import {HomeService} from "./home/home.service";
 
 const TreeAntdDemoComponentes = [
     TreeAntdBasicComponent,
@@ -64,7 +63,7 @@ const TreeAntdDemoComponentes = [
         DemoSortableComponent,
         SweetAlertComponent
     ],
-    providers: [HomeService],
+    providers: [],
     entryComponents: [
         ModelCustomComponent
     ]

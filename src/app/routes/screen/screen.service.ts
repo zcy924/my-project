@@ -10,7 +10,7 @@ import {defaultLayoutConfig} from "@core/models/screen";
 @Injectable()
 export class ScreenService {
     private SERVERAPI = `${environment.SERVICE_URL}`;
-    private url = `${environment.SERVICE_URL}` + 'chartsDevelop';
+    private url = `${environment.SERVICE_URL}` + '/chartsDevelop';
 
     constructor(private http: HttpClient,) {
 
@@ -29,7 +29,7 @@ export class ScreenService {
 
 
     updateScreenDef(def) {
-        return this.http.put(this.SERVERAPI + 'system/v1/user/screen', {
+        return this.http.put(this.SERVERAPI + '/system/v1/user/screen', {
             no: '0000',
             userScreenView: def
         });
@@ -38,7 +38,7 @@ export class ScreenService {
 
     getServiceData(params): Observable<any> {
         console.log(params);
-        return this.http.get(this.SERVERAPI + 'system/v1/user').pipe(
+        return this.http.get(this.SERVERAPI + '/system/v1/user').pipe(
             catchError(handleError('getUsers', []))
         );
     }

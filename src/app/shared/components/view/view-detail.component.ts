@@ -51,10 +51,11 @@ export class ViewDetailComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         if (this.id) {
-            this.http.get(environment.SERVICE_URL + 'system/v1/chart/' + this.id)
+            this.http.get(environment.SERVICE_URL + '/homechart/chartmodel/chartDetail/' + this.id)
                 .subscribe((data: RetInfo) => {
                         this.meta = JSON.parse(data.element.optionMsg);
                         this.payload = data.element.dataMsg.data[0];
+                        console.log('biew-detail');
                     }
                 );
         }

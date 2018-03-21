@@ -28,6 +28,13 @@
                             "hide": true
                         },
                         {
+                            "text": "大屏",
+                            "link": "screen",
+                            "translate": "screen",
+                            "reuse": false,
+                            "hide": true
+                        },
+                        {
                             "text": "仪表盘V1",
                             "link": "/dashboard/v1",
                             "translate": "dashboard_v1"

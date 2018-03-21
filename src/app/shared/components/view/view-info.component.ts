@@ -33,10 +33,11 @@ export class ViewInfoComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         // 根据组件的ID获取组件的定义与数据
         if (this.id) {
-            this.http.get(environment.SERVICE_URL + 'system/v1/chart/' + this.id)
+            this.http.get(environment.SERVICE_URL + '/homechart/chartmodel/chartDetail/' + this.id)
                 .subscribe((data: RetInfo) => {
                     this.meta = JSON.parse(data.element.optionMsg);
                     this.payload = data.element.dataMsg.data[0] || {};
+                    console.log('view-info');
                 });
         }
 

@@ -92,11 +92,12 @@ export class ViewRankComponent implements OnInit, OnChanges {
         this.nzSpanLength = Math.floor(24 / (this.meta.fields.length + 1));
 
         if (this.id) {
-            this.http.get(environment.SERVICE_URL + 'system/v1/chart/' + this.id)
+            this.http.get(environment.SERVICE_URL + '/homechart/chartmodel/chartDetail/' + this.id)
                 .subscribe((data: RetInfo) => {
                     this.meta = JSON.parse(data.element.optionMsg);
                     this.payload = data.element.dataMsg.data;
                     this.nzSpanLength = Math.floor(24 / (this.meta.fields.length + 1));
+                    console.log('view-rank');
                 });
         }
 

@@ -20,10 +20,12 @@ export class EchartsGraphComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
         const id = this.id || this.pid;
         if (id) {
             this.homeService.getOptionAndDataById(this.id)
                 .subscribe(data => {
+                    console.log('1111111111111111');
                     console.log(data);
                     if (data['element']) {
                         this.payload = data['element'].dataMsg;
@@ -31,6 +33,7 @@ export class EchartsGraphComponent implements OnInit {
                             dimensionList = this.payload.dimensionList,
                             measureList = this.payload.measureList,
                             that = this;
+                        console.log('echarts-graph.component');
                         try {
                             eval(data['element'].optionMsg);    // TODO(ccliu): 如果禁止使用eval，那么服务器应该需要生成js文件
                         } catch (e) {

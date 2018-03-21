@@ -9,7 +9,6 @@ import {TurnOverComponent} from './components/turn-over.component';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import {CarouselComponent} from './components/carousel.component';
 import {AngularSplitModule} from 'angular-split';
-import {EchartsGraphComponent} from "./components/echarts-graph.component";
 
 const COMPONENTS = [
     ScreenComponent,
@@ -17,7 +16,6 @@ const COMPONENTS = [
     FlipCardComponent,
     TurnOverComponent,
     CarouselComponent,
-    EchartsGraphComponent,
 ];
 
 @NgModule({

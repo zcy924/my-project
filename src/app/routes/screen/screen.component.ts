@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, Injector, OnInit, QueryList, ViewC
 import {HomeService} from "../elements/home/home.service";
 import {NzModalService} from 'ng-zorro-antd';
 import {CardAlternativesComponent} from './components/card-alternatives.component';
-import {panelAdapt} from "../../utils/componentTypeUtil";
+import {panelAdapt} from '../../utils/componentTypeUtil';
 import {ScreenService} from './screen.service';
 
 import * as _ from 'lodash';
@@ -101,6 +101,7 @@ export class ScreenComponent implements OnInit, AfterViewInit {
                 }
             }
         }, () => {
+            console.log('执行失败啊啊啊!');
 
         });
     }
